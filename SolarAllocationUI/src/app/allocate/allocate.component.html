@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-md-5 col-md-offset-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Solar Heater Allocator</div>
+            <div class="panel-body"> 
+                <form [formGroup]="allocateForm">
+                    <div class= "form-group">
+                        <label for="distributorname">Distributor Name</label>
+                        <input type="text" id="distributorname" formControlName="distributorname">
+                        <div *ngIf="allocateForm.controls['distributorname'].invalid" class="danger">
+                            <div *ngIf="allocateForm.controls['distributorname'].errors.required">
+                                Required Field.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class= "form-group">
+                        <label for="purchasedate">Purchase Date:</label>
+                        <input type="date" id="purchasedate" formControlName="purchasedate">
+                        <div *ngIf="allocateForm.controls['purchasedate'].invalid" class="danger">
+                            <div *ngIf="allocateForm.controls['purchasedate'].errors.required">
+                                Required Field.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class= "form-group">
+                        <label for="installdate">Install Date:</label>
+                        <input type="date" id="installdate" formControlName="installdate">
+                        <div *ngIf="allocateForm.controls['installdate'].invalid" class="danger">
+                            <div *ngIf="allocateForm.controls['installdate'].errors.required">
+                                Required Field.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class= "form-group">
+                        <label for="customerid">Customer ID:</label>
+                        <input type="text" id="customerid" formControlName="customerid">
+                        <div *ngIf="allocateForm.controls['customerid'].invalid" class="danger">
+                            <div *ngIf="allocateForm.controls['customerid'].errors.required">
+                                Required Field.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="button" id="button" name="button" (click)=register()>Register</button>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
