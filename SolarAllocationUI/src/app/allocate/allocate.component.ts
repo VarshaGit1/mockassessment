@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SolarHeater } from '../shared/SolarHeater';
 import { AllocateServiceService } from './allocate-service.service';
 
 @Component({
@@ -10,10 +11,10 @@ import { AllocateServiceService } from './allocate-service.service';
 })
 export class AllocateComponent implements OnInit {
   allocateForm: FormGroup;
-  errorMessage: string;
- successMessage: string; 
+  errorMessage: string="Error";
+ successMessage: string="Success"; 
 
-  constructor(fb:FormBuilder) {
+  constructor(private fb:FormBuilder,private allocateServiceService:AllocateServiceService) {
     this.allocateForm=fb.group({
       distributorname:new FormControl('',Validators.compose([Validators.required])),
       purchasedate:new FormControl('',Validators.compose([Validators.required])),
@@ -24,13 +25,16 @@ export class AllocateComponent implements OnInit {
   }
 
   
-
+  
   ngOnInit() {
   }
 
-  register() {
-    
-    this.allocateForm.reset();
+  register()
+  {
+    this.allocateServiceService.getData(this.allocateForm).subscribe(
+      (success)=>{alert(this.successMessage);},
+      (error)=>{alert(this.errorMessage);}
+    ); 
   }
 
 }

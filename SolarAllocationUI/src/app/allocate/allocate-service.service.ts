@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { SolarHeater } from '../shared/SolarHeater';
 
@@ -7,12 +7,12 @@ import { SolarHeater } from '../shared/SolarHeater';
 @Injectable()
 export class AllocateServiceService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
   
-  allocateUrl: string = '';
+  allocateUrl: string = 'http://localhost:3050/allocate';
    
   
   getData(data:any) : Observable<any> {
-    return;
+    return this.http.post<SolarHeater>(this.allocateUrl,data);
   }
 }
